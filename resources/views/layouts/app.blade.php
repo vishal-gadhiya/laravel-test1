@@ -9,15 +9,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+        label.error {
+            color: red;
+            margin-bottom: 0;
+            width: max-content;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -79,5 +83,10 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('vendors/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendors/validate/validate.min.js') }}"></script>    
+    <script type="text/javascript">
+        $('#login-form, #register-form, #forgot-form').validate();
+    </script>
 </body>
 </html>
