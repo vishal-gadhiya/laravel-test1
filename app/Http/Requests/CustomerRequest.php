@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
 
-class ProfileRequest extends FormRequest
+class CustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,24 +26,17 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'last_name' => 'required',
             'email' => 'required|email|unique:users,email,'.Auth::user()->id,
-            'password' => 'min:5|max:20|nullable',
-            'dob' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'first_name.required' => 'Please enter first name',
-            'last_name.required' => 'Please enter last name',
+            'first_name.required' => 'Please enter name',
             'email.required' => 'Please enter email',
             'email.email' => 'Please enter valid email',
             'email.unique' => 'Email already exists',
-            'password.min' => 'please enter at least 5 characters',
-            'password.max' => 'please enter valid password',
-            'dob.required' => 'Please select date',
         ];
     }
 }
